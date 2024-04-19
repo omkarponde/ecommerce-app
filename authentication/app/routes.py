@@ -11,28 +11,14 @@ from app.dependencies import get_current_user, get_db
 from app.exceptions import InvalidTokenException, EmailAlreadyExists, UsernameAlreadyExists
 
 auth_router = APIRouter(
-    prefix='/auth',
-    tags=['auth']
+    prefix='',
+    # tags=['auth']
 )
 
 
-@auth_router.get('/no-auth')
-async def hello():
-    return {"message": "Hello World"}
-
-
-@auth_router.get('/')
-def hello(Authorize: AuthJWT = Depends()):
-    """
-        ## Sample hello world route
-    """
-    try:
-        Authorize.jwt_required()
-
-    except Exception as e:
-        raise InvalidTokenException()
-
-    return {"message": "Hello World"}
+@auth_router.get('/ping', status_code=status.HTTP_204_NO_CONTENT)
+async def ping():
+    pass
 
 
 @auth_router.post('/signup', response_model=UserResponseModel, status_code=status.HTTP_201_CREATED)
@@ -85,12 +71,6 @@ def login(
     raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
                         detail="Invalid Username Or Password"
                         )
-
-
-@auth_router.get("/protected-route")
-def protected_route(current_user: User = Depends(get_current_user)):
-    # Your logic here
-    return {"message": "You are authorized."}
 
 
 @auth_router.get('/refresh')
