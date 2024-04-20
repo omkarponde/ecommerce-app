@@ -8,4 +8,5 @@ Session = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Declare an Automap Base
 Base = automap_base()
-Base.prepare(engine, reflect=True)
+Base.prepare(engine, reflect=True, schema="user_schema")
+

@@ -1,9 +1,8 @@
 from datetime import datetime
 from fastapi import APIRouter, status, Depends
-from fastapi.exceptions import HTTPException
 from app.models import User, Product
 from app.schemas import CreateProductModel, UpdateProductModel, ProductResponseModel
-from app.exceptions import UserNotFoundException, ProductNotFoundException, InvalidPriceValueException, UnauthorizedProductAccessException
+from app.exceptions import ProductNotFoundException, InvalidPriceValueException, UnauthorizedProductAccessException
 from app.db import Session
 from app.dependencies import get_db, can_post_product
 

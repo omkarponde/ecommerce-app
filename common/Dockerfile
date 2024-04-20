@@ -17,5 +17,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the content of the local src directory to the working directory
 COPY ./app /app/app
 
-# Expose port 8000 to the outside world
-EXPOSE 8000
+## Expose port 8000 to the outside world
+#EXPOSE 8000

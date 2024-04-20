@@ -4,9 +4,18 @@ services:
   # PostgreSQL service
   db:
     ports:
-      - 5432:5432
+      - "5432:5432"
     image: postgres:latest
     restart: always
+    env_file:
+      - .env
+
+  db_management:
+    build:
+      context: ./common
+    command: "python -m app.init_db"
+    depends_on:
+      - db
     env_file:
       - .env
 
@@ -17,6 +26,17 @@ services:
     ports:
       - "8001:8000"
     command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+  product:
+    build:
+      context: ./product
+    ports:
+      - "8002:8000"
+    command: [ "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000" ]
     depends_on:
       - db
     env_file:

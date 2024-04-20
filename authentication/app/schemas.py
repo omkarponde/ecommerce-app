@@ -68,10 +68,9 @@ class UserResponseModel(BaseModel):
     id: int
     username: str
     email: str
-    role: str
+    role_id: str
     is_active: bool
     created_at: datetime
-    updated_at: datetime
 
     class Config:
         orm_mode = True
@@ -82,8 +81,7 @@ class UserResponseModel(BaseModel):
                 "email": "user1@example.com",
                 "role": "admin",
                 "is_active": True,
-                "created_at": "2024-04-12T18:30:53.351929",
-                "updated_at": "2024-04-12T18:30:53.351938"
+                "created_at": "2024-04-12T18:30:53.351929"
             }
         }
 

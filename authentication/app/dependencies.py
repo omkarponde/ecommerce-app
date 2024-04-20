@@ -21,7 +21,7 @@ def get_current_user(Authorize: AuthJWT = Depends(), session: Session = Depends(
         raise InvalidTokenException()
 
     current_user = Authorize.get_jwt_subject()
-    user = session.query(User).filter(User.username == current_user).first()
+    user = session.query(User).filter(User.id == current_user).first()
     if not user:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
