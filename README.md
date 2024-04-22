@@ -61,3 +61,55 @@ This project is a set of microservices for an E-Commerce backend, built using Fa
   - Buyer can see only its own orders.
   - Admin can view all orders.
 
+
+## 🛠️ Setup Guide
+
+### Step 1: Clone the Repository
+
+Clone the repository to your local machine using the following command:
+
+```bash
+git clone https://github.com/omkarponde/ecommerce-app.git
+```
+
+### Step 2: Configure Environment Variables
+
+Create a `.env` file in the root directory of the project and add the necessary environment variables. Below is an example `.env` file:
+
+```dotenv
+# Example .env file
+
+POSTGRES_DB=postgres
+POSTGRES_USER=my_database_user
+POSTGRES_PASSWORD=my_database_password
+POSTGRES_HOST=db
+POSTGRES_PORT=5432
+```
+
+Replace `my_database_user`, `my_database_password`, etc., with your actual PostgreSQL database credentials.
+### Step 3: Start Docker Containers
+Navigate to the project directory and start the Docker containers using the following commands:
+
+```bash
+cd ecommerce-app
+```
+Initialize the database. The following command creates the tables as per the models defined in the common directory:`
+```bash
+make init_db
+```
+Start the Authentication service:
+```bash
+make dev_up SERVICE_NAME=authentication
+```
+Start the Product service:
+```bash
+make dev_up SERVICE_NAME=product
+```
+Start the Order service:
+```bash
+make dev_up SERVICE_NAME=order
+```
+To see the logs of the commands run, replace service_name with authentication, order, or product, depending on which logs you want to see:
+```bash
+make logs SERVICE_NAME=service_name
+```
