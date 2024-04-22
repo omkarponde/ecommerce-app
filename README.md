@@ -23,6 +23,24 @@ This project is a set of microservices for an E-Commerce backend, built using Fa
 - 🔐 **JWT Tokens**: Authentication is handled using JWT tokens.
 - 🛡️ **fastapi_auth_jwt**: Utilizes the `fastapi_auth_jwt` library for authentication and authorization.
 
+  
+## Role-Based Permissions
+
+- 🛡️ **Admin**:
+  - Can see all products.
+  - Can see all orders.
+  - Can delete a product.
+
+- 🛍️ **Seller**:
+  - Can post a product.
+  - Can view only its own products.
+  - Can update own product.
+
+- 🧑‍🤝‍🧑 **Buyer**:
+  - Can order a product.
+  - Can see all products.
+  - Can see only own orders.
+
 ## Product Microservice
 
 - 📦 **Create Product**:
@@ -43,19 +61,3 @@ This project is a set of microservices for an E-Commerce backend, built using Fa
   - Buyer can see only its own orders.
   - Admin can view all orders.
 
-## Role-Based Permissions
-
-- 🛡️ **Admin**:
-  - Can see all products.
-  - Can see all orders.
-  - Can delete a product.
-
-- 🛍️ **Seller**:
-  - Can post a product.
-  - Can view only its own products.
-  - Can update own product.
-
-- 🧑‍🤝‍🧑 **Buyer**:
-  - Can order a product.
-  - Can see all products.
-  - Can see only own orders.
