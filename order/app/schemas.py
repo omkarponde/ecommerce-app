@@ -4,16 +4,15 @@ from pydantic import BaseModel
 
 
 class CreateOrderModel(BaseModel):
-    product_ids: List[int]
+    order_data: List[List[int]]
 
     class Config:
         orm_mode = True
         schema_extra = {
             'example': {
-                "product_ids": [1, 2]
+                "order_data": [[1, 2], [3, 4]]
             }
         }
-
 
 class UpdateOrderModel(BaseModel):
     product_ids: List[int]

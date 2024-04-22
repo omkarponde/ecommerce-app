@@ -47,3 +47,5 @@ def can_buy_product(user: dict = Depends(is_user_authorized)):
     if user['role'] != "buyer":
         raise PermissionDeniedException()
     return user
+
+

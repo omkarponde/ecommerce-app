@@ -1,5 +1,5 @@
 from app.db import engine, Base
-from app.models import User, Role, Order, order_product_association, Product, Cart, CartItem, Shipment, Payment
+from app.models import User, Role, Order, OrderProductAssociation, Product, Cart, CartItem, Shipment, Payment
 from sqlalchemy.orm import sessionmaker
 # Define schema names
 schemas = ['user_schema', 'product_schema', 'order_schema', 'cart_schema', 'shipment_schema', 'payment_schema']
@@ -24,6 +24,6 @@ for role_name in roles:
 
 # Commit the changes to the database
 session.commit()
-
-# Close the session
 session.close()
+
+

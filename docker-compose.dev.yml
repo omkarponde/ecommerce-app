@@ -18,3 +18,9 @@ services:
     # for hot-reloading
     volumes:
       - ./product:/app
+
+  order:
+    command: [ "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload" ]
+    # for hot-reloading
+    volumes:
+      - ./order:/app
