@@ -1,9 +1,26 @@
 version: '3'
 
 services:
+  db_management:
+    # for hot-reloading
+    volumes:
+      - ./common:/app
+
   # FastAPI service
-  app:
+  authentication:
     command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
     # for hot-reloading
     volumes:
-      - ./:/app
+      - ./authentication:/app
+
+  product:
+    command: [ "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload" ]
+    # for hot-reloading
+    volumes:
+      - ./product:/app
+
+  order:
+    command: [ "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload" ]
+    # for hot-reloading
+    volumes:
+      - ./order:/app

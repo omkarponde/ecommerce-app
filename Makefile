@@ -1,7 +1,7 @@
 up:
 	docker-compose -f docker-compose.yml up -d
 dev_up:
-	docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+	docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d ${SERVICE_NAME}
 dev_logs:
 	docker-compose -f docker-compose.yml -f docker-compose.dev.yml logs -f --tail 100 ${SERVICE_NAME}
 init_db:
